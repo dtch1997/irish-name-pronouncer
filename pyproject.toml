@@ -1,0 +1,20 @@
+[project]
+name = "irish-name-pronouncer"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Daniel Tan", email = "dtch1997@users.noreply.github.com"},
+]
+dependencies = [
+    "flask",
+    "openai",
+    "requests>=2.31.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
