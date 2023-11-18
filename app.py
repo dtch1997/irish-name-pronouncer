@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify
 import asyncio
 
 from irish_name_pronouncer.api import get_response, parse_example
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/', methods=['GET'])
 def get_status():

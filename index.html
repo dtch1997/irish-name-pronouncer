@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Pronunciation Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #container {
+            text-align: center;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Name Pronunciation Finder</h1>
+        <input type="text" id="nameInput" placeholder="Enter a name">
+        <button onclick="getPronunciation()">Find Pronunciation</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Configure your API base URL here
+        const apiBaseUrl = 'http://localhost:5000';
+
+        function getPronunciation() {
+            var name = document.getElementById('nameInput').value;
+            fetch(`${apiBaseUrl}/name_pronunciation`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: name })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = 'Pronunciation: ' + data.pronunciation;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
